@@ -17,6 +17,10 @@ namespace Interface
 
         private Graphics g;
 
+        private bool is_selected = false;
+
+        private int tab_ind;
+
         public Form1()
         {
             InitializeComponent();
@@ -106,6 +110,13 @@ namespace Interface
             f.Scale(x, y, z);
         }
 
+        private Point ToPBPoint1(Point3d p)
+        {
+            int c = 20;
+            return new Point((int)((p.x / (1 - p.z / c)) + pictureBox1.Width / 2),
+                (int)((-1) * (p.y / (1 - p.z / c)) + pictureBox1.Height / 2));
+        }
+
         private Point ToPBPoint(Point3d p)
         {
 
@@ -135,10 +146,94 @@ namespace Interface
                 f = Hexahedron();
                 DrawFigure();
             }
+            is_selected = true;
         }
+
+
 
         private void textBox_displX_TextChanged(object sender, EventArgs e)
         {
+            TextBox tb = sender as TextBox;
+            int num;
+            if (int.TryParse(tb.Text, out num) && is_selected)
+                button_move.Enabled = true;
+            else
+                button_move.Enabled = false;
+        }
+
+        private void button_move_Click(object sender, EventArgs e)
+        {
+            int x;
+            int y;
+            int z;
+            if (!int.TryParse(textBox_displX.Text, out x))
+                x = 0;
+            if (!int.TryParse(textBox_displY.Text, out y))
+                y = 0;
+            if (!int.TryParse(textBox_displZ.Text, out z))
+                z = 0;
+            Displacement(x, y, z);
+            DrawFigure();
+        }
+
+        private void radioButton_rotateX_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            button_rotate.Enabled = true;
+            tab_ind = rb.TabIndex;
+            if (rb.TabIndex == 3)
+            {
+                textBox_customX1.Enabled = true;
+                textBox_customY1.Enabled = true;
+                textBox_customZ1.Enabled = true;
+                textBox_customX2.Enabled = true;
+                textBox_customY2.Enabled = true;
+                textBox_customZ2.Enabled = true;
+            }
+            else
+            {
+                textBox_customX1.Enabled = false;
+                textBox_customY1.Enabled = false;
+                textBox_customZ1.Enabled = false;
+                textBox_customX2.Enabled = false;
+                textBox_customY2.Enabled = false;
+                textBox_customZ2.Enabled = false;
+            }
+        }
+
+        private void button_rotate_Click(object sender, EventArgs e)
+        {
+            int angle;
+            if (!int.TryParse(textBox_rotateAngle.Text, out angle))
+                angle = 0;
+            Rotate(tab_ind, angle);
+            DrawFigure();
+        }
+
+        private void button_clear_Click(object sender, EventArgs e)
+        {
+            ClearScreen();
+        }
+
+        private void PrintFigure()
+        {
+            foreach (var edge in f.GetLines())
+            {
+                Console.WriteLine("line: ");
+                Console.WriteLine("start: ");
+                Console.WriteLine(edge.start.x.ToString() + "; " + edge.start.y.ToString() + "; " + edge.start.z.ToString());
+                Console.WriteLine("end: ");
+                Console.WriteLine(edge.end.x.ToString() + "; " + edge.end.y.ToString() + "; " + edge.end.z.ToString());
+            }
+        }
+
+        private void trackBar_scaleX_Scroll(object sender, EventArgs e)
+        {
+            double x = trackBar_scaleX.Value / 10.0;
+            double y = trackBar_scaleY.Value / 10.0;
+            double z = trackBar_scaleZ.Value / 10.0;
+            f.Scale(x, y, z);
+            DrawFigure();
 
         }
     }
