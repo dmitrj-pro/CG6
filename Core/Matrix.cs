@@ -75,15 +75,15 @@ namespace Render
 
 			return res;
 		}
-		public Point ToPoint() {
+		public Point3d ToPoint() {
 			if (_m >= 4)
-				return new Point(_matr[0][0] / _matr[3][0], _matr[1][0] / _matr[3][0], _matr[2][0] / _matr[3][0]);
+				return new Point3d(_matr[0][0] / _matr[3][0], _matr[1][0] / _matr[3][0], _matr[2][0] / _matr[3][0]);
 
 			if (_m == 3) {
-				return new Point(_matr[0][0] / _matr[2][0], _matr[1][0] / _matr[2][0]);
+				return new Point3d(_matr[0][0] / _matr[2][0], _matr[1][0] / _matr[2][0]);
 			}
 			else {
-				return new Point(_matr[0][0] / _matr[0][2], _matr[0][1] / _matr[0][2]);
+				return new Point3d(_matr[0][0] / _matr[0][2], _matr[0][1] / _matr[0][2]);
 			}
 		}
 		/// <summary>

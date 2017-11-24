@@ -1,18 +1,18 @@
 ﻿using System;
 namespace Render
 {
-	public class Point {
+	public class Point3d {
 		public double x;
 		public double y;
 		public double z;
 
-		public Point() { }
-		public Point(double _x, double _y) {
+		public Point3d() { }
+		public Point3d(double _x, double _y) {
 			x = _x;
 			y = _y;
 			z = 0;
 		}
-		public Point(double _x, double _y, double _z){
+		public Point3d(double _x, double _y, double _z){
 			x = _x;
 			y = _y;
 			z = _z;
@@ -44,7 +44,7 @@ namespace Render
 			Console.Write(z);
 			Console.WriteLine(")");
 		}
-		private void Save(Point x){
+		private void Save(Point3d x){
 			this.x = x.x;
 			this.y = x.y;
 			this.z = x.z;
@@ -55,7 +55,7 @@ namespace Render
 		/// <param name="x">Смещение по х</param>
 		/// <param name="y">Смещение по у</param>
 		public void Smestchenie(double x, double y) {
-			Point tmp = ToMatrix().Mult(Matrix.Smestchenie(x, y)).ToPoint();
+			Point3d tmp = ToMatrix().Mult(Matrix.Smestchenie(x, y)).ToPoint();
 			Save(tmp);
 		}
 		/// <summary>
@@ -65,7 +65,7 @@ namespace Render
 		/// <param name="y">Смещение по у</param>
 		/// <param name="z">Смещение по z</param>
 		public void Smestchenie(double x, double y, double z) {
-			Point tmp = ToMatrix().Mult(Matrix.Smestchenie(x, y, z)).ToPoint();
+			Point3d tmp = ToMatrix().Mult(Matrix.Smestchenie(x, y, z)).ToPoint();
 			Save(tmp);
 		}
 		/// <summary>
@@ -73,7 +73,7 @@ namespace Render
 		/// </summary>
 		/// <param name="d">Угол поворота</param>
 		public void Rotate2D(double d){
-			Point tmp = ToMatrix().Mult(Matrix.Rotate2D(d)).ToPoint();
+			Point3d tmp = ToMatrix().Mult(Matrix.Rotate2D(d)).ToPoint();
 			Save(tmp);
 		}
 		/// <summary>
@@ -81,7 +81,7 @@ namespace Render
 		/// </summary>
 		/// <param name="x">The x coordinate.</param>
 		public void Rotate3Dx(double x){
-			Point tmp = ToMatrix().Mult(Matrix.Rotate3Dx(x)).ToPoint();
+			Point3d tmp = ToMatrix().Mult(Matrix.Rotate3Dx(x)).ToPoint();
 			Save(tmp);
 		}
 		/// <summary>
@@ -117,14 +117,14 @@ namespace Render
 	}
 
 	public class Line {
-		public Point start;
-		public Point end;
+		public Point3d start;
+		public Point3d end;
 
 		public Line() {
-			start = new Point();
-			end = new Point();
+			start = new Point3d();
+			end = new Point3d();
 		}
-		public Line(Point start, Point end) {
+		public Line(Point3d start, Point3d end) {
 			this.end = end;
 			this.start = start;
 		}
