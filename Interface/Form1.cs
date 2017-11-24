@@ -214,6 +214,7 @@ namespace Interface
         private void Reset()
         {
             comboBox1.SelectedIndex = -1;
+            is_selected = false;
             foreach (var child in panel.Controls)
             {
                 if (child is Panel)
