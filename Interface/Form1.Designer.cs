@@ -33,9 +33,9 @@
             this.panel = new System.Windows.Forms.Panel();
             this.panel_reflect = new System.Windows.Forms.Panel();
             this.panel_scale = new System.Windows.Forms.Panel();
-            this.trackBar3 = new System.Windows.Forms.TrackBar();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.trackBar_scaleZ = new System.Windows.Forms.TrackBar();
+            this.trackBar_ScaleY = new System.Windows.Forms.TrackBar();
+            this.trackBar_scaleX = new System.Windows.Forms.TrackBar();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -43,10 +43,10 @@
             this.button_rotate = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_customY2 = new System.Windows.Forms.TextBox();
+            this.textBox_customX2 = new System.Windows.Forms.TextBox();
+            this.textBox_customY1 = new System.Windows.Forms.TextBox();
+            this.textBox_customX1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,17 +65,21 @@
             this.textBox_displX = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button_clear = new System.Windows.Forms.Button();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.button3 = new System.Windows.Forms.Button();
+            this.radioButton_reflectX = new System.Windows.Forms.RadioButton();
+            this.radioButton_reflectY = new System.Windows.Forms.RadioButton();
+            this.radioButton_reflectZ = new System.Windows.Forms.RadioButton();
+            this.button_reflect = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox_customZ1 = new System.Windows.Forms.TextBox();
+            this.textBox_customZ2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel.SuspendLayout();
             this.panel_reflect.SuspendLayout();
             this.panel_scale.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_scaleZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_ScaleY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_scaleX)).BeginInit();
             this.panel_rotate.SuspendLayout();
             this.panel_displ.SuspendLayout();
             this.SuspendLayout();
@@ -101,45 +105,45 @@
             // panel_reflect
             // 
             this.panel_reflect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_reflect.Controls.Add(this.button3);
-            this.panel_reflect.Controls.Add(this.radioButton7);
-            this.panel_reflect.Controls.Add(this.radioButton6);
-            this.panel_reflect.Controls.Add(this.radioButton5);
+            this.panel_reflect.Controls.Add(this.button_reflect);
+            this.panel_reflect.Controls.Add(this.radioButton_reflectZ);
+            this.panel_reflect.Controls.Add(this.radioButton_reflectY);
+            this.panel_reflect.Controls.Add(this.radioButton_reflectX);
             resources.ApplyResources(this.panel_reflect, "panel_reflect");
             this.panel_reflect.Name = "panel_reflect";
             // 
             // panel_scale
             // 
             this.panel_scale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_scale.Controls.Add(this.trackBar3);
-            this.panel_scale.Controls.Add(this.trackBar2);
-            this.panel_scale.Controls.Add(this.trackBar1);
+            this.panel_scale.Controls.Add(this.trackBar_scaleZ);
+            this.panel_scale.Controls.Add(this.trackBar_ScaleY);
+            this.panel_scale.Controls.Add(this.trackBar_scaleX);
             this.panel_scale.Controls.Add(this.label11);
             this.panel_scale.Controls.Add(this.label10);
             this.panel_scale.Controls.Add(this.label9);
             resources.ApplyResources(this.panel_scale, "panel_scale");
             this.panel_scale.Name = "panel_scale";
             // 
-            // trackBar3
+            // trackBar_scaleZ
             // 
-            resources.ApplyResources(this.trackBar3, "trackBar3");
-            this.trackBar3.Name = "trackBar3";
-            this.trackBar3.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar3.Value = 5;
+            resources.ApplyResources(this.trackBar_scaleZ, "trackBar_scaleZ");
+            this.trackBar_scaleZ.Name = "trackBar_scaleZ";
+            this.trackBar_scaleZ.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar_scaleZ.Value = 5;
             // 
-            // trackBar2
+            // trackBar_ScaleY
             // 
-            resources.ApplyResources(this.trackBar2, "trackBar2");
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar2.Value = 5;
+            resources.ApplyResources(this.trackBar_ScaleY, "trackBar_ScaleY");
+            this.trackBar_ScaleY.Name = "trackBar_ScaleY";
+            this.trackBar_ScaleY.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar_ScaleY.Value = 5;
             // 
-            // trackBar1
+            // trackBar_scaleX
             // 
-            resources.ApplyResources(this.trackBar1, "trackBar1");
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar1.Value = 5;
+            resources.ApplyResources(this.trackBar_scaleX, "trackBar_scaleX");
+            this.trackBar_scaleX.Name = "trackBar_scaleX";
+            this.trackBar_scaleX.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar_scaleX.Value = 5;
             // 
             // label11
             // 
@@ -159,13 +163,17 @@
             // panel_rotate
             // 
             this.panel_rotate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_rotate.Controls.Add(this.textBox_customZ2);
+            this.panel_rotate.Controls.Add(this.textBox_customZ1);
+            this.panel_rotate.Controls.Add(this.label13);
+            this.panel_rotate.Controls.Add(this.label12);
             this.panel_rotate.Controls.Add(this.button_rotate);
             this.panel_rotate.Controls.Add(this.label8);
             this.panel_rotate.Controls.Add(this.label7);
-            this.panel_rotate.Controls.Add(this.textBox5);
-            this.panel_rotate.Controls.Add(this.textBox4);
-            this.panel_rotate.Controls.Add(this.textBox3);
-            this.panel_rotate.Controls.Add(this.textBox2);
+            this.panel_rotate.Controls.Add(this.textBox_customY2);
+            this.panel_rotate.Controls.Add(this.textBox_customX2);
+            this.panel_rotate.Controls.Add(this.textBox_customY1);
+            this.panel_rotate.Controls.Add(this.textBox_customX1);
             this.panel_rotate.Controls.Add(this.label6);
             this.panel_rotate.Controls.Add(this.label5);
             this.panel_rotate.Controls.Add(this.label4);
@@ -193,25 +201,25 @@
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
-            // textBox5
+            // textBox_customY2
             // 
-            resources.ApplyResources(this.textBox5, "textBox5");
-            this.textBox5.Name = "textBox5";
+            resources.ApplyResources(this.textBox_customY2, "textBox_customY2");
+            this.textBox_customY2.Name = "textBox_customY2";
             // 
-            // textBox4
+            // textBox_customX2
             // 
-            resources.ApplyResources(this.textBox4, "textBox4");
-            this.textBox4.Name = "textBox4";
+            resources.ApplyResources(this.textBox_customX2, "textBox_customX2");
+            this.textBox_customX2.Name = "textBox_customX2";
             // 
-            // textBox3
+            // textBox_customY1
             // 
-            resources.ApplyResources(this.textBox3, "textBox3");
-            this.textBox3.Name = "textBox3";
+            resources.ApplyResources(this.textBox_customY1, "textBox_customY1");
+            this.textBox_customY1.Name = "textBox_customY1";
             // 
-            // textBox2
+            // textBox_customX1
             // 
-            resources.ApplyResources(this.textBox2, "textBox2");
-            this.textBox2.Name = "textBox2";
+            resources.ApplyResources(this.textBox_customX1, "textBox_customX1");
+            this.textBox_customX1.Name = "textBox_customX1";
             // 
             // label6
             // 
@@ -329,32 +337,52 @@
             this.button_clear.Name = "button_clear";
             this.button_clear.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // radioButton_reflectX
             // 
-            resources.ApplyResources(this.radioButton5, "radioButton5");
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.TabStop = true;
-            this.radioButton5.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.radioButton_reflectX, "radioButton_reflectX");
+            this.radioButton_reflectX.Name = "radioButton_reflectX";
+            this.radioButton_reflectX.TabStop = true;
+            this.radioButton_reflectX.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // radioButton_reflectY
             // 
-            resources.ApplyResources(this.radioButton6, "radioButton6");
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.TabStop = true;
-            this.radioButton6.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.radioButton_reflectY, "radioButton_reflectY");
+            this.radioButton_reflectY.Name = "radioButton_reflectY";
+            this.radioButton_reflectY.TabStop = true;
+            this.radioButton_reflectY.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // radioButton_reflectZ
             // 
-            resources.ApplyResources(this.radioButton7, "radioButton7");
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.TabStop = true;
-            this.radioButton7.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.radioButton_reflectZ, "radioButton_reflectZ");
+            this.radioButton_reflectZ.Name = "radioButton_reflectZ";
+            this.radioButton_reflectZ.TabStop = true;
+            this.radioButton_reflectZ.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // button_reflect
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.button_reflect, "button_reflect");
+            this.button_reflect.Name = "button_reflect";
+            this.button_reflect.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // textBox_customZ1
+            // 
+            resources.ApplyResources(this.textBox_customZ1, "textBox_customZ1");
+            this.textBox_customZ1.Name = "textBox_customZ1";
+            // 
+            // textBox_customZ2
+            // 
+            resources.ApplyResources(this.textBox_customZ2, "textBox_customZ2");
+            this.textBox_customZ2.Name = "textBox_customZ2";
             // 
             // Form1
             // 
@@ -371,9 +399,9 @@
             this.panel_reflect.PerformLayout();
             this.panel_scale.ResumeLayout(false);
             this.panel_scale.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_scaleZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_ScaleY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_scaleX)).EndInit();
             this.panel_rotate.ResumeLayout(false);
             this.panel_rotate.PerformLayout();
             this.panel_displ.ResumeLayout(false);
@@ -406,24 +434,28 @@
         private System.Windows.Forms.RadioButton radioButton_rotateCustom;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_customY2;
+        private System.Windows.Forms.TextBox textBox_customX2;
+        private System.Windows.Forms.TextBox textBox_customY1;
+        private System.Windows.Forms.TextBox textBox_customX1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button_rotate;
-        private System.Windows.Forms.TrackBar trackBar3;
-        private System.Windows.Forms.TrackBar trackBar2;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trackBar_scaleZ;
+        private System.Windows.Forms.TrackBar trackBar_ScaleY;
+        private System.Windows.Forms.TrackBar trackBar_scaleX;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.Button button_reflect;
+        private System.Windows.Forms.RadioButton radioButton_reflectZ;
+        private System.Windows.Forms.RadioButton radioButton_reflectY;
+        private System.Windows.Forms.RadioButton radioButton_reflectX;
+        private System.Windows.Forms.TextBox textBox_customZ2;
+        private System.Windows.Forms.TextBox textBox_customZ1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }
 
