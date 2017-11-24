@@ -24,6 +24,7 @@ namespace Interface
         public Form1()
         {
             InitializeComponent();
+            ClearScreen();
         }
 
         private void ClearScreen()
@@ -210,9 +211,42 @@ namespace Interface
             DrawFigure();
         }
 
+        private void Reset()
+        {
+            comboBox1.SelectedIndex = -1;
+            foreach (var child in panel.Controls)
+            {
+                if (child is Panel)
+                {
+                    foreach (var chld in ((Panel)child).Controls)
+                    {
+                        if (chld is TextBox)
+                        {
+                            (chld as TextBox).Text = "";
+
+                        }
+                        if (chld is RadioButton)
+                        {
+                            (chld as RadioButton).Checked = false;
+                        }
+                        if (chld is TrackBar)
+                        {
+                            (chld as TrackBar).Value = 10;
+                        }
+                        if (chld is Button)
+                        {
+                            (chld as Button).Enabled = false;
+                        }
+                    }
+                }
+            }
+        }
+
         private void button_clear_Click(object sender, EventArgs e)
         {
             ClearScreen();
+            Reset();
+            Reset();
         }
 
         private void PrintFigure()
@@ -220,11 +254,11 @@ namespace Interface
             foreach (var edge in f.GetLines())
             {
                 Console.WriteLine("line: ");
-                Console.WriteLine("start: ");
-                Console.WriteLine(edge.start.x.ToString() + "; " + edge.start.y.ToString() + "; " + edge.start.z.ToString());
-                Console.WriteLine("end: ");
-                Console.WriteLine(edge.end.x.ToString() + "; " + edge.end.y.ToString() + "; " + edge.end.z.ToString());
+                Console.WriteLine("start: " + edge.start.x.ToString() + "; " + edge.start.y.ToString() + "; " + edge.start.z.ToString());
+                Console.WriteLine("end: " + edge.end.x.ToString() + "; " + edge.end.y.ToString() + "; " + edge.end.z.ToString());
+                Console.WriteLine();
             }
+            Console.WriteLine();
         }
 
         private void trackBar_scaleX_Scroll(object sender, EventArgs e)
@@ -234,7 +268,15 @@ namespace Interface
             double z = trackBar_scaleZ.Value / 10.0;
             f.Scale(x, y, z);
             DrawFigure();
+        }
 
+        private void radioButton_reflectX_CheckedChanged(object sender, EventArgs e)
+        {
+            button_reflect.Enabled = true;
+        }
+
+        private void button_reflect_Click(object sender, EventArgs e)
+        {
         }
     }
   

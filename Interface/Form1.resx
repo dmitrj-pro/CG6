@@ -147,6 +147,21 @@
   <data name="panel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Right</value>
   </data>
+  <data name="button_reflect.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button_reflect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 72</value>
+  </data>
+  <data name="button_reflect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="button_reflect.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="button_reflect.Text" xml:space="preserve">
+    <value>Reflect</value>
+  </data>
   <data name="&gt;&gt;button_reflect.Name" xml:space="preserve">
     <value>button_reflect</value>
   </data>
@@ -158,6 +173,21 @@
   </data>
   <data name="&gt;&gt;button_reflect.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="radioButton_reflectZ.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButton_reflectZ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 48</value>
+  </data>
+  <data name="radioButton_reflectZ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 17</value>
+  </data>
+  <data name="radioButton_reflectZ.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioButton_reflectZ.Text" xml:space="preserve">
+    <value>Axis Z</value>
   </data>
   <data name="&gt;&gt;radioButton_reflectZ.Name" xml:space="preserve">
     <value>radioButton_reflectZ</value>
@@ -171,6 +201,21 @@
   <data name="&gt;&gt;radioButton_reflectZ.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="radioButton_reflectY.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButton_reflectY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 26</value>
+  </data>
+  <data name="radioButton_reflectY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 17</value>
+  </data>
+  <data name="radioButton_reflectY.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButton_reflectY.Text" xml:space="preserve">
+    <value>Axis Y</value>
+  </data>
   <data name="&gt;&gt;radioButton_reflectY.Name" xml:space="preserve">
     <value>radioButton_reflectY</value>
   </data>
@@ -182,6 +227,21 @@
   </data>
   <data name="&gt;&gt;radioButton_reflectY.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="radioButton_reflectX.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButton_reflectX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="radioButton_reflectX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 17</value>
+  </data>
+  <data name="radioButton_reflectX.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButton_reflectX.Text" xml:space="preserve">
+    <value>Axis X</value>
   </data>
   <data name="&gt;&gt;radioButton_reflectX.Name" xml:space="preserve">
     <value>radioButton_reflectX</value>
@@ -216,15 +276,6 @@
   <data name="&gt;&gt;panel_reflect.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="trackBar_scaleZ.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 60</value>
-  </data>
-  <data name="trackBar_scaleZ.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 45</value>
-  </data>
-  <data name="trackBar_scaleZ.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <data name="&gt;&gt;trackBar_scaleZ.Name" xml:space="preserve">
     <value>trackBar_scaleZ</value>
   </data>
@@ -236,15 +287,6 @@
   </data>
   <data name="&gt;&gt;trackBar_scaleZ.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="trackBar_scaleY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 31</value>
-  </data>
-  <data name="trackBar_scaleY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 45</value>
-  </data>
-  <data name="trackBar_scaleY.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
   </data>
   <data name="&gt;&gt;trackBar_scaleY.Name" xml:space="preserve">
     <value>trackBar_scaleY</value>
@@ -258,15 +300,6 @@
   <data name="&gt;&gt;trackBar_scaleY.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="trackBar_scaleX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 3</value>
-  </data>
-  <data name="trackBar_scaleX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 45</value>
-  </data>
-  <data name="trackBar_scaleX.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="&gt;&gt;trackBar_scaleX.Name" xml:space="preserve">
     <value>trackBar_scaleX</value>
   </data>
@@ -278,21 +311,6 @@
   </data>
   <data name="&gt;&gt;trackBar_scaleX.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 60</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
-  </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Scale Z</value>
   </data>
   <data name="&gt;&gt;label11.Name" xml:space="preserve">
     <value>label11</value>
@@ -306,21 +324,6 @@
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 31</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
-  </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>Scale Y</value>
-  </data>
   <data name="&gt;&gt;label10.Name" xml:space="preserve">
     <value>label10</value>
   </data>
@@ -332,21 +335,6 @@
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
-  </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Scale X</value>
   </data>
   <data name="&gt;&gt;label9.Name" xml:space="preserve">
     <value>label9</value>
@@ -783,113 +771,149 @@
   <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="button_reflect.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="trackBar_scaleZ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 60</value>
   </data>
-  <data name="button_reflect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>181, 72</value>
+  <data name="trackBar_scaleZ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 45</value>
   </data>
-  <data name="button_reflect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="trackBar_scaleZ.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="button_reflect.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;trackBar_scaleZ.Name" xml:space="preserve">
+    <value>trackBar_scaleZ</value>
   </data>
-  <data name="button_reflect.Text" xml:space="preserve">
-    <value>Reflect</value>
+  <data name="&gt;&gt;trackBar_scaleZ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button_reflect.Name" xml:space="preserve">
-    <value>button_reflect</value>
+  <data name="&gt;&gt;trackBar_scaleZ.Parent" xml:space="preserve">
+    <value>panel_scale</value>
   </data>
-  <data name="&gt;&gt;button_reflect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_reflect.Parent" xml:space="preserve">
-    <value>panel_reflect</value>
-  </data>
-  <data name="&gt;&gt;button_reflect.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;trackBar_scaleZ.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="radioButton_reflectZ.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="trackBar_scaleY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 31</value>
   </data>
-  <data name="radioButton_reflectZ.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 48</value>
+  <data name="trackBar_scaleY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 45</value>
   </data>
-  <data name="radioButton_reflectZ.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 17</value>
+  <data name="trackBar_scaleY.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="radioButton_reflectZ.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;trackBar_scaleY.Name" xml:space="preserve">
+    <value>trackBar_scaleY</value>
   </data>
-  <data name="radioButton_reflectZ.Text" xml:space="preserve">
-    <value>Axis Z</value>
+  <data name="&gt;&gt;trackBar_scaleY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioButton_reflectZ.Name" xml:space="preserve">
-    <value>radioButton_reflectZ</value>
+  <data name="&gt;&gt;trackBar_scaleY.Parent" xml:space="preserve">
+    <value>panel_scale</value>
   </data>
-  <data name="&gt;&gt;radioButton_reflectZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButton_reflectZ.Parent" xml:space="preserve">
-    <value>panel_reflect</value>
-  </data>
-  <data name="&gt;&gt;radioButton_reflectZ.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;trackBar_scaleY.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="radioButton_reflectY.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="trackBar_scaleX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 3</value>
   </data>
-  <data name="radioButton_reflectY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 26</value>
+  <data name="trackBar_scaleX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 45</value>
   </data>
-  <data name="radioButton_reflectY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 17</value>
+  <data name="trackBar_scaleX.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="radioButton_reflectY.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;trackBar_scaleX.Name" xml:space="preserve">
+    <value>trackBar_scaleX</value>
   </data>
-  <data name="radioButton_reflectY.Text" xml:space="preserve">
-    <value>Axis Y</value>
+  <data name="&gt;&gt;trackBar_scaleX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioButton_reflectY.Name" xml:space="preserve">
-    <value>radioButton_reflectY</value>
+  <data name="&gt;&gt;trackBar_scaleX.Parent" xml:space="preserve">
+    <value>panel_scale</value>
   </data>
-  <data name="&gt;&gt;radioButton_reflectY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButton_reflectY.Parent" xml:space="preserve">
-    <value>panel_reflect</value>
-  </data>
-  <data name="&gt;&gt;radioButton_reflectY.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;trackBar_scaleX.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="radioButton_reflectX.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="radioButton_reflectX.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 60</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Scale Z</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>panel_scale</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 31</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Scale Y</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>panel_scale</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="radioButton_reflectX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 17</value>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
   </data>
-  <data name="radioButton_reflectX.TabIndex" type="System.Int32, mscorlib">
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="radioButton_reflectX.Text" xml:space="preserve">
-    <value>Axis X</value>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Scale X</value>
   </data>
-  <data name="&gt;&gt;radioButton_reflectX.Name" xml:space="preserve">
-    <value>radioButton_reflectX</value>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
   </data>
-  <data name="&gt;&gt;radioButton_reflectX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioButton_reflectX.Parent" xml:space="preserve">
-    <value>panel_reflect</value>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>panel_scale</value>
   </data>
-  <data name="&gt;&gt;radioButton_reflectX.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="textBox_customZ2.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>

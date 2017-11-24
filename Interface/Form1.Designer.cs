@@ -117,6 +117,7 @@
             resources.ApplyResources(this.button_reflect, "button_reflect");
             this.button_reflect.Name = "button_reflect";
             this.button_reflect.UseVisualStyleBackColor = true;
+            this.button_reflect.Click += new System.EventHandler(this.button_reflect_Click);
             // 
             // radioButton_reflectZ
             // 
@@ -124,6 +125,7 @@
             this.radioButton_reflectZ.Name = "radioButton_reflectZ";
             this.radioButton_reflectZ.TabStop = true;
             this.radioButton_reflectZ.UseVisualStyleBackColor = true;
+            this.radioButton_reflectZ.CheckedChanged += new System.EventHandler(this.radioButton_reflectX_CheckedChanged);
             // 
             // radioButton_reflectY
             // 
@@ -131,6 +133,7 @@
             this.radioButton_reflectY.Name = "radioButton_reflectY";
             this.radioButton_reflectY.TabStop = true;
             this.radioButton_reflectY.UseVisualStyleBackColor = true;
+            this.radioButton_reflectY.CheckedChanged += new System.EventHandler(this.radioButton_reflectX_CheckedChanged);
             // 
             // radioButton_reflectX
             // 
@@ -138,6 +141,7 @@
             this.radioButton_reflectX.Name = "radioButton_reflectX";
             this.radioButton_reflectX.TabStop = true;
             this.radioButton_reflectX.UseVisualStyleBackColor = true;
+            this.radioButton_reflectX.CheckedChanged += new System.EventHandler(this.radioButton_reflectX_CheckedChanged);
             // 
             // panel_scale
             // 
