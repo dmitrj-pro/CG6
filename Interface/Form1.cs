@@ -29,24 +29,6 @@ namespace Interface
             g.Clear(Color.Silver);
         }
 
-        private Figure Tetrahedron()
-        {
-            Figure figure = new Figure();
-            double h = 50 * Math.Sqrt(3);
-            Point3d p1 = new Point3d(0, h / 2, 0);
-            Point3d p2 = new Point3d(-50, -h / 2, 0);
-            Point3d p3 = new Point3d(50, -h / 2, 0);
-            Point3d p4 = new Point3d(0, -h / 2, -h);
-
-            figure.Add(new Line(p1, p2));
-            figure.Add(new Line(p2, p3));
-            figure.Add(new Line(p3, p1));
-            figure.Add(new Line(p1, p4));
-            figure.Add(new Line(p2, p4));
-            figure.Add(new Line(p3, p4));
-            return figure;
-        }
-
         private Figure Hexahedron()
         {
             Figure figure = new Figure();
@@ -78,6 +60,24 @@ namespace Interface
 
             return figure;
 
+        }
+
+        private Figure Tetrahedron()
+        {
+            Figure figure = new Figure();
+            double coef = 50 * Math.Sqrt(3);
+            Point3d p1 = new Point3d(0, coef / 2, 0);
+            Point3d p2 = new Point3d(-50, -coef / 2, 0);
+            Point3d p3 = new Point3d(50, -coef / 2, 0);
+            Point3d p4 = new Point3d(0, -coef / 2, -coef);
+
+            figure.Add(new Line(p1, p2));
+            figure.Add(new Line(p2, p3));
+            figure.Add(new Line(p3, p1));
+            figure.Add(new Line(p1, p4));
+            figure.Add(new Line(p2, p4));
+            figure.Add(new Line(p3, p4));
+            return figure;
         }
 
         private void Displacement(double x, double y, double z)
@@ -135,6 +135,11 @@ namespace Interface
                 f = Hexahedron();
                 DrawFigure();
             }
+        }
+
+        private void textBox_displX_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
   
