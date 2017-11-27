@@ -79,6 +79,9 @@ namespace Render
 			if (_m >= 4)
 				return new Point3d(_matr[0][0] / _matr[3][0], _matr[1][0] / _matr[3][0], _matr[2][0] / _matr[3][0]);
 
+			if (_n >= 4)
+				return new Point3d (_matr [0] [0] / _matr [0] [3], _matr [0] [1] / _matr [0] [3], _matr [0] [2] / _matr [0] [3]);
+
 			if (_m == 3) {
 				return new Point3d(_matr[0][0] / _matr[2][0], _matr[1][0] / _matr[2][0]);
 			}
@@ -156,7 +159,7 @@ namespace Render
 			res.Set(Math.Cos(x), 0, 0);
 			res.Set(Math.Sin(x), 0, 2);
 			res.Set(1, 1, 1);
-			res.Set((-1) * Math.Sin(x), 0, 2);
+			res.Set((-1) * Math.Sin(x), 2, 0);
 			res.Set(Math.Cos(x), 2, 2);
 			res.Set(1, 3, 3);
 			return res;

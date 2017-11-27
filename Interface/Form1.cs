@@ -20,6 +20,7 @@ namespace Interface
         private bool is_selected = false;
 
         private int tab_ind;
+		private Render.Point3d _prev_scale = new Point3d (1, 1, 1);
 
         public Form1()
         {
@@ -215,6 +216,7 @@ namespace Interface
         {
             comboBox1.SelectedIndex = -1;
             is_selected = false;
+			_prev_scale = new Point3d (1, 1, 1);
             foreach (var child in panel.Controls)
             {
                 if (child is Panel)
@@ -267,7 +269,14 @@ namespace Interface
             double x = trackBar_scaleX.Value / 10.0;
             double y = trackBar_scaleY.Value / 10.0;
             double z = trackBar_scaleZ.Value / 10.0;
-            f.Scale(x, y, z);
+            
+			// Перед тем, как повернуть нужно обязательно вернуться к предыдущему размеру
+			// Иначе изменяем размер уже измененной фигуры
+			f.Scale (1 / _prev_scale.x, 1 / _prev_scale.y, 1 / _prev_scale.z);
+			f.Scale(x, y, z);
+			_prev_scale.x = x;
+			_prev_scale.y = y;
+			_prev_scale.z = z;
             DrawFigure();
         }
 

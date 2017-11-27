@@ -144,7 +144,7 @@ namespace Render
 		/// <param name="y">Смещение по у</param>
 		/// <param name="z">Смещение по z</param>
 		public void Smestchenie(double x, double y, double z) {
-			end.Smestchenie(x, y, z);
+			end.Smestchenie(x, y,z);
 			start.Smestchenie(x, y, z);
 		}
 		/// <summary>
