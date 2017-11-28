@@ -112,14 +112,14 @@ namespace Interface
             f.Scale(x, y, z);
         }
 
-        private Point ToPBPoint1(Point3d p)
+        private Point ToPBPoint(Point3d p)
         {
-            int c = 20;
-            return new Point((int)((p.x / (1 - p.z / c)) + pictureBox1.Width / 2),
-                (int)((-1) * (p.y / (1 - p.z / c)) + pictureBox1.Height / 2));
+            int c = 200;
+            return new Point((int)((c * p.x / (p.z + c)) + pictureBox1.Width / 2),
+                (int)((-1) * (c * p.y / (p.z + c)) + pictureBox1.Height / 2));
         }
 
-        private Point ToPBPoint(Point3d p)
+        private Point ToPBPoint1(Point3d p)
         {
 
             return new Point((int)(p.x + pictureBox1.Width / 2), (int)((-1) * p.y + pictureBox1.Height / 2));
@@ -205,9 +205,10 @@ namespace Interface
 
         private void button_rotate_Click(object sender, EventArgs e)
         {
-            int angle;
-            if (!int.TryParse(textBox_rotateAngle.Text, out angle))
+            double angle;
+            if (!double.TryParse(textBox_rotateAngle.Text, out angle))
                 angle = 0;
+            angle = angle * Math.PI / 180;
             Rotate(tab_ind, angle);
             DrawFigure();
         }
