@@ -20,7 +20,10 @@ namespace Interface
         private bool is_selected = false;
 
         private int tab_ind;
-		private Render.Point3d _prev_scale = new Point3d (1, 1, 1);
+        private int prev_ind = -1;
+        private Render.Point3d _prev_scale = new Point3d(1, 1, 1);
+
+        private Point3d _prev_angle = new Point3d(0, 0, 0);
 
         public Form1()
         {
@@ -284,10 +287,26 @@ namespace Interface
         private void radioButton_reflectX_CheckedChanged(object sender, EventArgs e)
         {
             button_reflect.Enabled = true;
+            RadioButton rb = sender as RadioButton;
+            tab_ind = rb.TabIndex;
         }
 
         private void button_reflect_Click(object sender, EventArgs e)
         {
+            if (prev_ind != -1)
+            {
+                double angle1 = -90;
+                angle1 = angle1 * Math.PI / 180;
+                Rotate(prev_ind, angle1);
+                DrawFigure();
+            }
+
+
+            double angle = 90;
+            angle = angle * Math.PI / 180;
+            Rotate(tab_ind, angle);
+            DrawFigure();
+            prev_ind = tab_ind;
         }
     }
   
