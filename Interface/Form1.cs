@@ -96,18 +96,31 @@ namespace Interface
 
         private void Rotate(int axis, double deg)
         {
-            if(axis == 0)
-            {
-                f.RotateX(deg);
-            }
-            else if(axis == 1)
-            {
-                f.RotateY(deg);
-            }
-            else if(axis == 2)
-            {
-                f.RotateZ(deg);
-            }
+			if (axis == 0) {
+				f.RotateX (deg);
+			} else if (axis == 1) {
+				f.RotateY (deg);
+			} else if (axis == 2) {
+				f.RotateZ (deg);
+			} else if (axis == 3) {
+				Point3d start = new Point3d ();
+				if (!Double.TryParse (textBox_customX1.Text, out start.x))
+					start.x = 0;
+				if (!Double.TryParse (textBox_customY1.Text, out start.y))
+					start.y = 0;
+				if (!Double.TryParse (textBox_customZ1.Text, out start.z))
+					start.z = 0;
+
+				Point3d end = new Point3d ();
+				if (!Double.TryParse (textBox_customX2.Text, out end.x))
+					end.x = 0;
+				if (!Double.TryParse (textBox_customY2.Text, out end.y))
+					end.y = 0;
+				if (!Double.TryParse (textBox_customZ2.Text, out end.z))
+					end.z = 0;
+				Line _lin = new Line (start, end);
+				f.Rotate (_lin, deg);
+			}
         }
 
         private void Scale(double x, double y, double z)
