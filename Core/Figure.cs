@@ -75,33 +75,6 @@ namespace Render {
 
 					
 		}
-
-		/*
-        private void axisRotate(myPoint pt1, myPoint pt2, double angle) // поворот вокруг оси
-        {
-            myPoint c = normalizeVector(pt1, pt2);
-            double x = c.X, y = c.Y, z = c.Z;      
-            double d = Math.Sqrt(y * y + z * z);
-            double alpha = -Math.Asin(y / d);
-            double beta = Math.Asin(x);
-
-            foreach (myPoint p in points)
-            {
-                p.X -= pt1.X;
-                p.Y -= pt1.Y;
-                p.Z -= pt1.Z;
-
-                rotateX(p, alpha);
-                rotateY(p, beta);
-                rotateZ(p, angle);
-                rotateY(p, -beta);
-                rotateX(p, -alpha);
-
-                p.X += pt1.X;
-                p.Y += pt1.Y;
-                p.Z += pt1.Z;
-            }
-            */
 		/// <summary>
 		/// Смещение фигуры в трехмерном пространстве
 		/// </summary>
@@ -123,6 +96,113 @@ namespace Render {
 			for (int i=0; i< lines.Count; i++) {
 				lines [i].Scale (x, y, z);
 			}
+		}
+		/// <summary>
+		/// Сохранить фигуру в файл
+		/// </summary>
+		/// <param name="filename">Filename.</param>
+		public void Save(string filename){
+			string res = "";
+			for (int i = 0; i < lines.Count; i++) {
+				res += lines [i].start.x + " " + lines [i].start.y + " " + lines[i].start.z + " " + 
+					lines [i].end.x + " " + lines [i].end.y + " " + lines[i].end.z + "\n";
+			}
+			System.IO.File.WriteAllText (filename, res);
+		}
+		/// <summary>
+		/// Загрузить фигуру из файла
+		/// </summary>
+		/// <param name="filename">Filename.</param>
+		public bool Load(string filename){
+			bool res = true;
+
+			string [] lines = System.IO.File.ReadAllLines (filename);
+			for (int i = 0; i < lines.Length; i++) {
+				string[] data = lines [i].Split (' ');
+				if (data.Length != 6)
+					continue;
+				double x1, x2, y1, y2, z1, z2;
+				if (!Double.TryParse (data [0], out x1))
+					res = false;
+				if (!Double.TryParse (data [1], out y1))
+					res = false;
+				if (!Double.TryParse (data [2], out z1))
+					res = false;
+				if (!Double.TryParse (data [3], out x2))
+					res = false;
+				if (!Double.TryParse (data [4], out y2))
+					res = false;
+				if (!Double.TryParse (data [5], out z2))
+					res = false;
+				if (!res)
+					return res;
+				
+				Point3d p1 = new Point3d (x1, y1, z1);
+				Point3d p2 = new Point3d (x2, y2, z2);
+				Line l = new Line (p1, p2);
+				this.lines.Add (l);
+
+			}
+			return res;
+		}
+
+		//Example figure = Figure.Generate(((double x,double y) =>{ return x*x - y*y;}), -50,-50,0,0,1,1);
+		/// <summary>
+		/// Построение фигуры по функции
+		/// </summary>
+		/// <param name="f">Функция</param>
+		/// <param name="x1">Начало по x</param>
+		/// <param name="y1">Начало по y</param>
+		/// <param name="x2">Конец по x</param>
+		/// <param name="y2">Конец по y</param>
+		/// <param name="x_step">Шаг по x</param>
+		/// <param name="y_step">Шаг по y</param>
+		public static Figure Generate(Func<double, double, double> f, double x1, double y1, double x2, double y2, double x_step, double y_step){
+			if (x_step <= 0)
+				throw new Exception ("step for x > 0");
+			if (y_step <= 0)
+				throw new Exception ("step for y > 0");
+			if (x1 > x2)
+				throw new Exception ("x1 <! x2");
+			if (y1 > y2)
+				throw new Exception ("y1 <! y2");
+			
+			Figure res = new Figure ();
+
+			List<Line> prev = new List<Line> ();
+			List<Line> th = new List<Line> ();
+			Point3d pr = null;
+
+			for (double y = y1; y <= y2; y+=y_step) {
+				int i = 0;
+				for (double x = x1; x <= x2; x += x_step) {
+					double z = f (x, y);
+					//Point3d tmp = new Point3d (x, y, z);
+					Point3d tmp = new Point3d (z, y, x);
+					//Point3d tmp = new Point3d (z, y, x);
+					//Console.WriteLine (x);
+					if (pr != null) {
+						Line l = new Line (pr, tmp);
+						th.Add (l);
+						res.Add (l);
+					}
+					if (prev.Count > i) {
+						Line tm = new Line (prev [i].start, tmp);
+						res.Add (tm);
+					} else if (prev.Count != 0) {
+						Line tm = new Line (prev [i-1].end, tmp);
+						res.Add (tm);
+					}
+					pr = tmp;
+					i++;
+				}
+
+				prev = th;
+				th = new List<Line> ();
+				pr = null;
+			}
+
+			return res;
 		}
 	}
 }

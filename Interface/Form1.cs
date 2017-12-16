@@ -86,6 +86,7 @@ namespace Interface
             figure.Add(new Line(p1, p4));
             figure.Add(new Line(p2, p4));
             figure.Add(new Line(p3, p4));
+
             return figure;
         }
 
