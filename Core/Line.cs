@@ -117,6 +117,25 @@ namespace Render
 		public virtual bool Equals(Point3d p1){
 			return (x == p1.x) && (y == p1.y) && (z == p1.z);
 		}
+		// Длина вектора
+		public double Length(){
+			return Math.Sqrt (x * x + y * y + z * z);
+		}
+		public double SMult(Point3d vec){
+			double res = x * vec.x;
+			res += y * vec.y;
+			res += z * vec.z;
+			return res;
+
+		}
+		static public double Ugol(Point3d vec1, Point3d vec2){
+			double a = vec1.SMult (vec2);
+			double l1 = vec1.Length ();
+			double l2 = vec2.Length ();
+			double co = a / (l1 * l2);
+			Console.WriteLine (co);
+			return Math.Acos (co);
+		}
 	}
 
 	public class Line {

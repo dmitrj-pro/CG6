@@ -51,21 +51,21 @@ namespace Interface
             Point3d p7 = new Point3d(-100 / 2, 100 / 2, -100 / 2);
             Point3d p8 = new Point3d(-100 / 2, 100 / 2, 100 / 2);
 
+			// Должна быть именно такая последовательность описания, иначе отображается не совсем корректно
             figure.Add(new Line(p1, p2));
             figure.Add(new Line(p2, p3));
-            figure.Add(new Line(p3, p4));
-            figure.Add(new Line(p4, p1));
-
-            figure.Add(new Line(p5, p6));
-            figure.Add(new Line(p6, p7));
-            figure.Add(new Line(p7, p8));
-            figure.Add(new Line(p8, p5));
-
             figure.Add(new Line(p1, p5));
             figure.Add(new Line(p2, p6));
-            figure.Add(new Line(p3, p7));
-            figure.Add(new Line(p4, p8));
 
+			figure.Add(new Line(p3, p4));
+			figure.Add(new Line(p4, p1));
+			figure.Add(new Line(p7, p8));
+
+			figure.Add(new Line(p5, p6));
+			figure.Add(new Line(p6, p7));
+			figure.Add(new Line(p8, p5));
+			figure.Add(new Line(p3, p7));
+			figure.Add(new Line(p4, p8));
 
             return figure;
 
@@ -80,12 +80,13 @@ namespace Interface
             Point3d p3 = new Point3d(50, -coef / 2, 0);
             Point3d p4 = new Point3d(0, -coef / 2, -coef);
 
-            figure.Add(new Line(p1, p2));
-            figure.Add(new Line(p2, p3));
-            figure.Add(new Line(p3, p1));
-            figure.Add(new Line(p1, p4));
-            figure.Add(new Line(p2, p4));
-            figure.Add(new Line(p3, p4));
+			// Должна быть именно такая последовательность описания, иначе отображается не совсем корректно
+			figure.Add(new Line(p3, p4));
+			figure.Add(new Line(p2, p4));
+			figure.Add(new Line(p3, p1));
+			figure.Add(new Line(p2, p3));
+			figure.Add(new Line(p1, p4));
+			figure.Add(new Line(p1, p2));
 
             return figure;
         }
@@ -154,8 +155,12 @@ namespace Interface
 			var f2 = f.toVersion2 ();
 
 			foreach (var fac in f2.Faces()) {
-				//if (!fac.isFacial ())
-				//	continue;
+
+				var ugol = Point3d.Ugol (fac.Normal (), new Point3d (0, 0, 1));
+				Console.WriteLine (ugol);
+				if (Math.Abs(ugol) > (3.0 / 2))
+					continue;
+
 				Point3d start = fac.Points () [0];
 				for (int i = 0; i < (fac.Points ().Count - 1); i++) {
 					var edge = fac.Points () [i];

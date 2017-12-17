@@ -211,22 +211,22 @@ namespace Render {
 				for (int j = i + 1; j < lines.Count; j++) {
 					if (lines [i].start.Equals (lines [j].start)) {
 						Face f = new Face ();
-						f.Add (lines [i].start);
 						f.Add (lines [i].end);
+						f.Add (lines [i].start);
 						f.Add (lines [j].end);
 						res.Add (f);
 					}
 					if (lines [i].start.Equals (lines [j].end)) {
 						Face f = new Face ();
-						f.Add (lines [i].start);
 						f.Add (lines [i].end);
+						f.Add (lines [i].start);
 						f.Add (lines [j].start);
 						res.Add (f);
 					}
 					if (lines [i].end.Equals (lines [j].start)) {
 						Face f = new Face ();
-						f.Add (lines [i].end);
 						f.Add (lines [i].start);
+						f.Add (lines [i].end);
 						f.Add (lines [j].end);
 						res.Add (f);
 					}
