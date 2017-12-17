@@ -114,6 +114,9 @@ namespace Render
 		public void Scale(double x, double y, double z) {
 			Save(ToMatrix().Mult(Matrix.Size3D(x, y, z)).ToPoint());
 		}
+		public virtual bool Equals(Point3d p1){
+			return (x == p1.x) && (y == p1.y) && (z == p1.z);
+		}
 	}
 
 	public class Line {

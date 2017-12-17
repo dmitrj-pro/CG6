@@ -204,5 +204,79 @@ namespace Render {
 
 			return res;
 		}
+		public Figure2 toVersion2(){
+			Figure2 res = new Figure2 ();
+			// Огранизуем базовые плоскости
+			for (int i = 0; i < lines.Count; i++) {
+				for (int j = i + 1; j < lines.Count; j++) {
+					if (lines [i].start.Equals (lines [j].start)) {
+						Face f = new Face ();
+						f.Add (lines [i].start);
+						f.Add (lines [i].end);
+						f.Add (lines [j].end);
+						res.Add (f);
+					}
+					if (lines [i].start.Equals (lines [j].end)) {
+						Face f = new Face ();
+						f.Add (lines [i].start);
+						f.Add (lines [i].end);
+						f.Add (lines [j].start);
+						res.Add (f);
+					}
+					if (lines [i].end.Equals (lines [j].start)) {
+						Face f = new Face ();
+						f.Add (lines [i].end);
+						f.Add (lines [i].start);
+						f.Add (lines [j].end);
+						res.Add (f);
+					}
+					if (lines [i].end.Equals (lines [j].end)) {
+						Face f = new Face ();
+						f.Add (lines [i].start);
+						f.Add (lines [i].end);
+						f.Add (lines [j].start);
+						res.Add (f);
+					}
+				}
+			}
+			Figure2 tmp = res;
+			res = new Figure2 ();
+			// У нас много дублирующихся плоскостей из-за того, что одна
+			// плоскость реализована 3 точками, а в плоскости их 
+			// может быть больше
+			for (int i = 0; i < tmp.Faces ().Count; i++) {
+				Face f = tmp.Faces () [i];
+				for (int j = i+1; j < tmp.Faces ().Count; j++) {
+					Face t = tmp.Faces () [j];
+
+					int eq = 0;
+					int pos = -1;
+
+					for (int k = 0; k < t.Points ().Count; k++) {
+						if (f.Cont (t.Points () [k]))
+							eq++;
+						else if (f.isIn (t.Points () [k])) {
+							pos = k;
+						} else 
+							eq--;
+					}
+
+					if ((eq+1) == t.Points ().Count) {
+						if (pos != -1) {
+							tmp._faces [i].Add (t.Points () [pos]);
+						}
+						tmp._faces.RemoveAt (j);
+					}
+
+				}
+			}
+			// У нас много дублирующихся плоскостей. Удаляем их
+			res = tmp.DeleteDoublicete();
+
+
+			//res.Print ();
+			//Console.WriteLine (res.Faces ().Count);
+			return res;
+		}
 	}
 }

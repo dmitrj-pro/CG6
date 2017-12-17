@@ -146,11 +146,29 @@ namespace Interface
         {
             ClearScreen();
             Pen pen = new Pen(Color.DarkRed);
-            foreach (var edge in f.GetLines())
+            /*foreach (var edge in f.GetLines())
             {
                 g.DrawLine(pen, ToPBPoint(edge.start), ToPBPoint(edge.end));
-            }
+            }*/
+
+			var f2 = f.toVersion2 ();
+
+			foreach (var fac in f2.Faces()) {
+				//if (!fac.isFacial ())
+				//	continue;
+				Point3d start = fac.Points () [0];
+				for (int i = 0; i < (fac.Points ().Count - 1); i++) {
+					var edge = fac.Points () [i];
+					g.DrawLine(pen, ToPBPoint(edge), ToPBPoint(fac.Points () [i+1]));
+				}
+				g.DrawLine(pen, ToPBPoint(start), ToPBPoint(fac.Points () [fac.Points ().Count-1]));
+			}
+
             pictureBox1.Invalidate();
+
+			//TEST
+			//ToDO
+			f.toVersion2 ();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
