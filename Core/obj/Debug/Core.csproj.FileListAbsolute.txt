@@ -1,0 +1,5 @@
+C:\Programming\C#\CG6\Core\bin\Debug\Core.dll
+C:\Programming\C#\CG6\Core\bin\Debug\Core.pdb
+C:\Programming\C#\CG6\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\Programming\C#\CG6\Core\obj\Debug\Core.dll
+C:\Programming\C#\CG6\Core\obj\Debug\Core.pdb

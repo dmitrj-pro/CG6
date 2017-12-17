@@ -345,6 +345,40 @@ namespace Interface
             DrawFigure();
             prev_ind = tab_ind;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(is_selected)
+            {
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.Filter = "Text|*.txt";
+                saveFileDialog1.Title = "Save as Text File";
+                saveFileDialog1.ShowDialog();
+                if (saveFileDialog1.FileName != "")
+                {
+                    f.Save(saveFileDialog1.FileName);
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (f == null)
+            {
+                f = new Figure();
+            }
+            is_selected = true;
+            ClearScreen();
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Text|*.txt";
+            openFileDialog1.Title = "Select a Text File";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                f.Load(openFileDialog1.FileName);
+            }
+            DrawFigure();
+        }
     }
   
 }
