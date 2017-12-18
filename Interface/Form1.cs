@@ -19,7 +19,7 @@ namespace Interface
 
         private bool is_selected = false;
 
-        private bool clipping = true;
+        private int clipping = 1;
 
         private int tab_ind;
         private int prev_ind = -1;
@@ -156,30 +156,72 @@ namespace Interface
         {
             ClearScreen();
             Pen pen = new Pen(Color.DarkRed);
-            if (!clipping)
-            {
-                foreach (var edge in f.GetLines())
-                {
-                    g.DrawLine(pen, ToPBPoint(edge.start), ToPBPoint(edge.end));
-                }
-                
-            } else {
-				
-                var f2 = f.toVersion2();
+			if (clipping == 2) {
+				foreach (var edge in f.GetLines()) {
+					g.DrawLine (pen, ToPBPoint (edge.start), ToPBPoint (edge.end));
+				}
+			} else if (clipping == 1) {
+				var f2 = f.toVersion2 ();
 
-                foreach (var fac in f2.Faces()) {
-                    var ugol = Point3d.Ugol(fac.Normal(), new Point3d(0, 0, 200));
-                    if (Math.Abs(ugol) > (3.0 / 2))
-                        continue;
+				foreach (var fac in f2.Faces()) {
+					var ugol = Point3d.Ugol (fac.Normal (), new Point3d (0, 0, 200));
+					if (Math.Abs (ugol) > (3.0 / 2))
+						continue;
 
-                    Point3d start = fac.Points()[0];
-                    for (int i = 0; i < (fac.Points().Count - 1); i++) {
-                        var edge = fac.Points()[i];
-                        g.DrawLine(pen, ToPBPoint(edge), ToPBPoint(fac.Points()[i + 1]));
-                    }
-                    g.DrawLine(pen, ToPBPoint(start), ToPBPoint(fac.Points()[fac.Points().Count - 1]));
-                }
-            }
+					Point3d start = fac.Points () [0];
+					for (int i = 0; i < (fac.Points ().Count - 1); i++) {
+						var edge = fac.Points () [i];
+						g.DrawLine (pen, ToPBPoint (edge), ToPBPoint (fac.Points () [i + 1]));
+					}
+					g.DrawLine (pen, ToPBPoint (start), ToPBPoint (fac.Points () [fac.Points ().Count - 1]));
+				}
+			} else if (clipping == 4) {
+				//Z-Buffer
+				var f2 = f.toVersion2();
+				//Конвертированная фигура
+				var tmp = new Figure2 ();
+				for (int j= 0; j < f2.Faces ().Count; j++) {
+					List<Point3d> points=new List<Point3d>();
+					for (int i = 0; i < f2.Faces()[j].Points ().Count; i++) {
+						var ff = ToPBPoint ((f2.Faces()[j]).Points () [i]);
+						Point3d t = new Point3d (ff.X, ff.Y);
+						points.Add (t);
+					}
+					Face f = new Face (points);
+					tmp.Add (f);
+				}
+				Color fc = Color.Yellow;
+				for (int x = 0; x < pictureBox1.Width; x++) {
+					for (int y = 0; y < pictureBox1.Height; y++) {
+
+						int pos = -1;
+						double depth = -1;
+
+						for (int i = 0; i < tmp.Faces ().Count; i++) {
+							if (tmp.Faces () [i].inside_triangle_check (x, y)) {
+								double t = f2.Faces () [i].DepthValue (0, 0);
+								if (depth == -1) {
+									depth = t;
+									pos = i;
+								} else {
+									if (depth < t) {
+										depth = t;
+										pos = i;
+									}
+								}
+							}
+						}
+						if (pos != -1) {
+							depth = Math.Abs(depth / 200.0);
+							Console.WriteLine (depth);
+							if (depth > 1)
+								depth = 1;
+							pen.Color = Color.FromArgb ((int)(fc.R * depth), (int)(fc.G * depth), (int)(fc.B * depth));
+							g.DrawEllipse (pen, x, y, 1, 1);
+						}
+					}
+				}
+			}
 			pictureBox1.Invalidate();
         }
 
@@ -188,13 +230,20 @@ namespace Interface
             if(comboBox1.SelectedIndex == 0)
             {
                 f = Tetrahedron();
-                DrawFigure();
             }
             else if (comboBox1.SelectedIndex == 1)
             {
                 f = Hexahedron();
-                DrawFigure();
             }
+            else if(comboBox1.SelectedIndex == 2)
+            {
+                f = Figure.Generate(((double x, double y) => { return x * x - y * y; }), -30, -30, 0, 0, 10, 10);
+            }
+            else
+            {
+                f = Figure.Generate(((double x, double y) => { return x - y; }), -30, -30, 0, 0, 10, 10);
+            }
+            DrawFigure();
             is_selected = true;
         }
 
@@ -390,9 +439,11 @@ namespace Interface
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
-                clipping = true;
-            else
-                clipping = false;
+                clipping = 1;
+            else if(radioButton2.Checked)
+                clipping = 2;
+            else if (radioButton3.Checked)
+                clipping = 3;
             DrawFigure();
         }
     }
