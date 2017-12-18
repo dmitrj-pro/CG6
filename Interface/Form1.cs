@@ -19,7 +19,7 @@ namespace Interface
 
         private bool is_selected = false;
 
-        private bool clipping = true;
+        private int clipping = 1;
 
         private int tab_ind;
         private int prev_ind = -1;
@@ -156,7 +156,7 @@ namespace Interface
         {
             ClearScreen();
             Pen pen = new Pen(Color.DarkRed);
-            if (!clipping)
+            if (clipping == 2)
             {
                 foreach (var edge in f.GetLines())
                 {
@@ -164,7 +164,7 @@ namespace Interface
                 }
                 pictureBox1.Invalidate();
             }
-            else
+            else if (clipping == 1)
             {
                 var f2 = f.toVersion2();
 
@@ -402,9 +402,11 @@ namespace Interface
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
-                clipping = true;
-            else
-                clipping = false;
+                clipping = 1;
+            else if(radioButton2.Checked)
+                clipping = 2;
+            else if (radioButton3.Checked)
+                clipping = 3;
             DrawFigure();
         }
     }
