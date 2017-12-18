@@ -105,6 +105,8 @@ namespace Render
 		private bool CheckInside(Point3d point1, Point3d point2, Point3d point3, int x, int y) {
 			double fxyC, fxy;
 			fxyC = point3.y * (point2.x - point1.x) - point3.x * (point2.y - point1.y) + point1.x * (point2.y - point1.y) - point1.y * (point2.x - point1.x);
+			//fxyC = point3.Y * (point2.X - point1.X) - point3.X * (point2.Y - point1.Y) + point1.X * (point2.Y - point1.Y) - point1.Y * (point2.X - point1.X);
+			//fxy =  y * (point2.X - point1.X) - x * (point2.Y - point1.Y) + point1.X * (point2.Y - point1.Y) - point1.Y * (point2.X - point1.X);
 			fxy =  y * (point2.x - point1.x) - x * (point2.y - point1.y) + point1.x * (point2.y - point1.y) - point1.y * (point2.x - point1.x);
 			if (((fxyC <= 0) && (fxy <= 0)) || ((fxyC >= 0) && (fxy >= 0)))
 				return true;
@@ -112,7 +114,7 @@ namespace Render
 				return false;
 		}
 		//Subroutine to check any point(x,y) inside the triangle
-		public bool inside_triangle_check(int x, int y) {
+		public bool Inside(int x, int y) {
 			bool res = false;
 			for (int i = 0; i < _points.Count; i++) {
 				Point3d pt1 = _points[i % _points.Count];
@@ -125,8 +127,11 @@ namespace Render
 			}
 			return res;
 		}
+		static public double MaxValue(){
+			return 400;
+		}
 		public double DepthValue(int x,int y){
-			double z = 200;
+			double z = MaxValue ();
 			for (int i = 0; i < _points.Count; i++) {
 				Point3d pt1 = _points[(i)% _points.Count];
 				Point3d pt2 = _points[(i + 1 )% _points.Count];
@@ -138,13 +143,21 @@ namespace Render
 				surface.B = (pt2.x - pt3.x) * (pt1.z - pt2.z) - (pt1.x - pt2.x) * (pt2.z - pt3.z);
 				surface.C = (pt2.y - pt3.y) * (pt1.x - pt2.x) - (pt1.y - pt2.y) * (pt2.x - pt3.x);
 				surface.D = - pt1.x * (pt2.y * pt3.z - pt2.z * pt3.y) + pt1.y * (pt2.x * pt3.z - pt2.z * pt3.x) - pt1.z * (pt2.x * pt3.y - pt2.y * pt3.x);
+
+				/*pt.A = (pt2.z - pt3.z) * (pt1.y - pt2.y) - (pt1.z - pt2.z) * (pt2.y - pt3.y);
+				pt.B = (pt2.x - pt3.x) * (pt1.z - pt2.z) - (pt1.x - pt2.x) * (pt2.z - pt3.z);
+				pt.C = (pt2.y - pt3.y) * (pt1.x - pt2.x) - (pt1.y - pt2.y) * (pt2.x - pt3.x);
+				pt.D = - pt1.x * (pt2.y * pt3.z - pt2.z * pt3.y) + pt1.y * (pt2.x * pt3.z - pt2.z * pt3.x) - pt1.z * (pt2.x * pt3.y - pt2.y * pt3.x);
+
 				/*surface.A = (pt3.z - pt2.z) * (pt1.y - pt2.y) - (pt2.z - pt1.z) * (pt2.y - pt3.y);
 				surface.B = (pt2.x - pt3.x) * (pt2.z - pt1.z) - (pt1.x - pt2.x) * (pt3.z - pt2.z);
 				surface.C = (pt2.y - pt3.y) * (pt1.x - pt2.x) - (pt1.y - pt2.y) * (pt2.x - pt3.x);
 				surface.D = - pt1.x * (pt2.y * pt2.z - pt3.z * pt3.y) + pt1.y * (pt2.x * pt2.z - pt3.z * pt3.x) - pt1.z * (pt2.x * pt3.y - pt2.y * pt3.x);*/
 
 				if (surface.B != 0)
-					z = (-surface.A * x - surface.C * y - surface.D) / surface.B;
+					z = (surface.A * x + surface.C * y + surface.D) / surface.B;
+				else 
+					z = (surface.A * x + surface.C * y + surface.D) / 0.001;
 			}
 			return z;
 		}

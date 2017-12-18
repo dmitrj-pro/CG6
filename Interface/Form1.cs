@@ -175,7 +175,7 @@ namespace Interface
 					}
 					g.DrawLine (pen, ToPBPoint (start), ToPBPoint (fac.Points () [fac.Points ().Count - 1]));
 				}
-			} else if (clipping == 4) {
+			} else if (clipping == 3) {
 				//Z-Buffer
 				var f2 = f.toVersion2();
 				//Конвертированная фигура
@@ -190,7 +190,7 @@ namespace Interface
 					Face f = new Face (points);
 					tmp.Add (f);
 				}
-				Color fc = Color.Yellow;
+				Color fc = Color.Green;
 				for (int x = 0; x < pictureBox1.Width; x++) {
 					for (int y = 0; y < pictureBox1.Height; y++) {
 
@@ -198,22 +198,24 @@ namespace Interface
 						double depth = -1;
 
 						for (int i = 0; i < tmp.Faces ().Count; i++) {
-							if (tmp.Faces () [i].inside_triangle_check (x, y)) {
-								double t = f2.Faces () [i].DepthValue (0, 0);
-								if (depth == -1) {
-									depth = t;
-									pos = i;
-								} else {
-									if (depth < t) {
+							if (tmp.Faces () [i].Inside (x, y)) {
+								double t = f2.Faces () [i].DepthValue (1,1);
+								if (t != Face.MaxValue()){
+									if (pos == -1) {
 										depth = t;
 										pos = i;
+									} else {
+										if (depth > t) {
+											depth = t;
+											pos = i;
+										}
 									}
 								}
 							}
 						}
 						if (pos != -1) {
-							depth = Math.Abs(depth / 200.0);
-							Console.WriteLine (depth);
+							//Console.WriteLine (depth);
+							depth = Math.Abs((Face.MaxValue() - depth) / Face.MaxValue());
 							if (depth > 1)
 								depth = 1;
 							pen.Color = Color.FromArgb ((int)(fc.R * depth), (int)(fc.G * depth), (int)(fc.B * depth));
