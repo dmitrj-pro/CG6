@@ -156,75 +156,95 @@ namespace Interface
         {
             ClearScreen();
             Pen pen = new Pen(Color.DarkRed);
-			if (clipping == 2) {
-				foreach (var edge in f.GetLines()) {
-					g.DrawLine (pen, ToPBPoint (edge.start), ToPBPoint (edge.end));
-				}
-			} else if (clipping == 1) {
-				var f2 = f.toVersion2 ();
+            if (clipping == 2)
+            {
+                foreach (var edge in f.GetLines())
+                {
+                    g.DrawLine(pen, ToPBPoint(edge.start), ToPBPoint(edge.end));
+                }
+            }
+            else if (clipping == 1)
+            {
+                var f2 = f.toVersion2();
 
-				foreach (var fac in f2.Faces()) {
-					var ugol = Point3d.Ugol (fac.Normal (), new Point3d (0, 0, 200));
-					if (Math.Abs (ugol) > (3.0 / 2))
-						continue;
+                foreach (var fac in f2.Faces())
+                {
+                    var ugol = Point3d.Ugol(fac.Normal(), new Point3d(0, 0, 200));
+                    if (Math.Abs(ugol) > (3.0 / 2))
+                        continue;
 
-					Point3d start = fac.Points () [0];
-					for (int i = 0; i < (fac.Points ().Count - 1); i++) {
-						var edge = fac.Points () [i];
-						g.DrawLine (pen, ToPBPoint (edge), ToPBPoint (fac.Points () [i + 1]));
-					}
-					g.DrawLine (pen, ToPBPoint (start), ToPBPoint (fac.Points () [fac.Points ().Count - 1]));
-				}
-			} else if (clipping == 3) {
-				//Z-Buffer
-				var f2 = f.toVersion2();
-				//Конвертированная фигура
-				var tmp = new Figure2 ();
-				for (int j= 0; j < f2.Faces ().Count; j++) {
-					List<Point3d> points=new List<Point3d>();
-					for (int i = 0; i < f2.Faces()[j].Points ().Count; i++) {
-						var ff = ToPBPoint ((f2.Faces()[j]).Points () [i]);
-						Point3d t = new Point3d (ff.X, ff.Y);
-						points.Add (t);
-					}
-					Face f = new Face (points);
-					tmp.Add (f);
-				}
-				Color fc = Color.Green;
-				for (int x = 0; x < pictureBox1.Width; x++) {
-					for (int y = 0; y < pictureBox1.Height; y++) {
+                    Point3d start = fac.Points()[0];
+                    for (int i = 0; i < (fac.Points().Count - 1); i++)
+                    {
+                        var edge = fac.Points()[i];
+                        g.DrawLine(pen, ToPBPoint(edge), ToPBPoint(fac.Points()[i + 1]));
+                    }
+                    g.DrawLine(pen, ToPBPoint(start), ToPBPoint(fac.Points()[fac.Points().Count - 1]));
+                }
+            }
+            else if (clipping == 3)
+            {
+                //Z-Buffer
+                var f2 = f.toVersion2();
+                //Конвертированная фигура
+                var tmp = new Figure2();
+                for (int j = 0; j < f2.Faces().Count; j++)
+                {
+                    List<Point3d> points = new List<Point3d>();
+                    for (int i = 0; i < f2.Faces()[j].Points().Count; i++)
+                    {
+                        var ff = ToPBPoint((f2.Faces()[j]).Points()[i]);
+                        Point3d t = new Point3d(ff.X, ff.Y);
+                        points.Add(t);
+                    }
+                    Face f = new Face(points);
+                    tmp.Add(f);
+                }
+                Color fc = Color.Green;
+                for (int x = 0; x < pictureBox1.Width; x++)
+                {
+                    for (int y = 0; y < pictureBox1.Height; y++)
+                    {
 
-						int pos = -1;
-						double depth = -1;
+                        int pos = -1;
+                        double depth = -1;
 
-						for (int i = 0; i < tmp.Faces ().Count; i++) {
-							if (tmp.Faces () [i].Inside (x, y)) {
-								double t = f2.Faces () [i].DepthValue (1,1);
-								if (t != Face.MaxValue()){
-									if (pos == -1) {
-										depth = t;
-										pos = i;
-									} else {
-										if (depth > t) {
-											depth = t;
-											pos = i;
-										}
-									}
-								}
-							}
-						}
-						if (pos != -1) {
-							//Console.WriteLine (depth);
-							depth = Math.Abs((Face.MaxValue() - depth) / Face.MaxValue());
-							if (depth > 1)
-								depth = 1;
-							pen.Color = Color.FromArgb ((int)(fc.R * depth), (int)(fc.G * depth), (int)(fc.B * depth));
-							g.DrawEllipse (pen, x, y, 1, 1);
-						}
-					}
-				}
-			}
-			pictureBox1.Invalidate();
+                        for (int i = 0; i < tmp.Faces().Count; i++)
+                        {
+                            if (tmp.Faces()[i].Inside(x, y))
+                            {
+                                double t = f2.Faces()[i].DepthValue(1, 1);
+                                if (t != Face.MaxValue())
+                                {
+                                    if (pos == -1)
+                                    {
+                                        depth = t;
+                                        pos = i;
+                                    }
+                                    else
+                                    {
+                                        if (depth > t)
+                                        {
+                                            depth = t;
+                                            pos = i;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if (pos != -1)
+                        {
+                            //Console.WriteLine (depth);
+                            depth = Math.Abs((Face.MaxValue() - depth) / Face.MaxValue());
+                            if (depth > 1)
+                                depth = 1;
+                            pen.Color = Color.FromArgb((int)(fc.R * depth), (int)(fc.G * depth), (int)(fc.B * depth));
+                            g.DrawEllipse(pen, x, y, 1, 1);
+                        }
+                    }
+                }
+            }
+            pictureBox1.Invalidate();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -239,7 +259,7 @@ namespace Interface
             }
             else if(comboBox1.SelectedIndex == 2)
             {
-                f = Figure.Generate(((double x, double y) => { return x * x - y * y; }), -30, -30, 0, 0, 10, 10);
+                f = Figure.Generate(((double x, double y) => { return x * x - y * y; }), -20, -20, 0, 0, 10, 10);
             }
             else
             {
@@ -320,24 +340,27 @@ namespace Interface
             {
                 if (child is Panel)
                 {
-                    foreach (var chld in ((Panel)child).Controls)
+                    if ((child as Panel).TabIndex != 5)
                     {
-                        if (chld is TextBox)
+                        foreach (var chld in ((Panel)child).Controls)
                         {
-                            (chld as TextBox).Text = "";
+                            if (chld is TextBox)
+                            {
+                                (chld as TextBox).Text = "";
 
-                        }
-                        if (chld is RadioButton)
-                        {
-                            (chld as RadioButton).Checked = false;
-                        }
-                        if (chld is TrackBar)
-                        {
-                            (chld as TrackBar).Value = 10;
-                        }
-                        if (chld is Button)
-                        {
-                            (chld as Button).Enabled = false;
+                            }
+                            if (chld is RadioButton)
+                            {
+                                (chld as RadioButton).Checked = false;
+                            }
+                            if (chld is TrackBar)
+                            {
+                                (chld as TrackBar).Value = 10;
+                            }
+                            if (chld is Button)
+                            {
+                                (chld as Button).Enabled = false;
+                            }
                         }
                     }
                 }
@@ -447,6 +470,11 @@ namespace Interface
             else if (radioButton3.Checked)
                 clipping = 3;
             DrawFigure();
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
   

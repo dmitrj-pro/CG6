@@ -78,6 +78,12 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.panel_for_figure = new System.Windows.Forms.Panel();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel.SuspendLayout();
             this.panel_reflect.SuspendLayout();
@@ -87,6 +93,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_scaleX)).BeginInit();
             this.panel_rotate.SuspendLayout();
             this.panel_displ.SuspendLayout();
+            this.panel_for_figure.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -100,6 +107,7 @@
             // 
             resources.ApplyResources(this.panel, "panel");
             this.panel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel.Controls.Add(this.panel_for_figure);
             this.panel.Controls.Add(this.panel_reflect);
             this.panel.Controls.Add(this.panel_scale);
             this.panel.Controls.Add(this.panel_rotate);
@@ -399,7 +407,9 @@
             resources.GetString("comboBox1.Items"),
             resources.GetString("comboBox1.Items1"),
             resources.GetString("comboBox1.Items2"),
-            resources.GetString("comboBox1.Items3")});
+            resources.GetString("comboBox1.Items3"),
+            resources.GetString("comboBox1.Items4"),
+            resources.GetString("comboBox1.Items5")});
             resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
@@ -449,6 +459,49 @@
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
+            // panel_for_figure
+            // 
+            this.panel_for_figure.Controls.Add(this.label14);
+            this.panel_for_figure.Controls.Add(this.textBox1);
+            this.panel_for_figure.Controls.Add(this.radioButton6);
+            this.panel_for_figure.Controls.Add(this.radioButton5);
+            this.panel_for_figure.Controls.Add(this.radioButton4);
+            resources.ApplyResources(this.panel_for_figure, "panel_for_figure");
+            this.panel_for_figure.Name = "panel_for_figure";
+            // 
+            // radioButton4
+            // 
+            resources.ApplyResources(this.radioButton4, "radioButton4");
+            this.radioButton4.Checked = true;
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.TabStop = true;
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
+            // radioButton5
+            // 
+            resources.ApplyResources(this.radioButton5, "radioButton5");
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
+            // radioButton6
+            // 
+            resources.ApplyResources(this.radioButton6, "radioButton6");
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -476,6 +529,8 @@
             this.panel_rotate.PerformLayout();
             this.panel_displ.ResumeLayout(false);
             this.panel_displ.PerformLayout();
+            this.panel_for_figure.ResumeLayout(false);
+            this.panel_for_figure.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,6 +587,12 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Panel panel_for_figure;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton radioButton4;
     }
 }
 
