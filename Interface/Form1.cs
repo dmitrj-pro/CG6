@@ -185,13 +185,7 @@ namespace Interface
                     g.DrawLine(pen, ToPBPoint(start), ToPBPoint(fac.Points()[fac.Points().Count - 1]));
                 }
                 pictureBox1.Invalidate();
-
             }
-            //pictureBox1.Invalidate();
-            //f.toVersion2();
-            //TEST
-            //ToDO
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -199,13 +193,20 @@ namespace Interface
             if(comboBox1.SelectedIndex == 0)
             {
                 f = Tetrahedron();
-                DrawFigure();
             }
             else if (comboBox1.SelectedIndex == 1)
             {
                 f = Hexahedron();
-                DrawFigure();
             }
+            else if(comboBox1.SelectedIndex == 2)
+            {
+                f = Figure.Generate(((double x, double y) => { return x * x - y * y; }), -30, -30, 0, 0, 10, 10);
+            }
+            else
+            {
+                f = Figure.Generate(((double x, double y) => { return x - y; }), -30, -30, 0, 0, 10, 10);
+            }
+            DrawFigure();
             is_selected = true;
         }
 
