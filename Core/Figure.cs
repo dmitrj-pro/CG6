@@ -273,9 +273,6 @@ namespace Render {
 			// У нас много дублирующихся плоскостей. Удаляем их
 			res = tmp.DeleteDoublicete();
 
-
-			//res.Print ();
-			//Console.WriteLine (res.Faces ().Count);
 			return res;
 		}
 	}

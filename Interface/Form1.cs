@@ -162,36 +162,24 @@ namespace Interface
                 {
                     g.DrawLine(pen, ToPBPoint(edge.start), ToPBPoint(edge.end));
                 }
-                pictureBox1.Invalidate();
-            }
-            else
-            {
+                
+            } else {
                 var f2 = f.toVersion2();
 
-                foreach (var fac in f2.Faces())
-                {
-
-                    var ugol = Point3d.Ugol(fac.Normal(), new Point3d(0, 0, 1));
-                    Console.WriteLine(ugol);
+                foreach (var fac in f2.Faces()) {
+                    var ugol = Point3d.Ugol(fac.Normal(), new Point3d(0, 0, 200));
                     if (Math.Abs(ugol) > (3.0 / 2))
                         continue;
 
                     Point3d start = fac.Points()[0];
-                    for (int i = 0; i < (fac.Points().Count - 1); i++)
-                    {
+                    for (int i = 0; i < (fac.Points().Count - 1); i++) {
                         var edge = fac.Points()[i];
                         g.DrawLine(pen, ToPBPoint(edge), ToPBPoint(fac.Points()[i + 1]));
                     }
                     g.DrawLine(pen, ToPBPoint(start), ToPBPoint(fac.Points()[fac.Points().Count - 1]));
                 }
-                pictureBox1.Invalidate();
-
             }
-            //pictureBox1.Invalidate();
-            //f.toVersion2();
-            //TEST
-            //ToDO
-
+			pictureBox1.Invalidate();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

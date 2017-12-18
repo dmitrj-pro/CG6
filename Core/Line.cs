@@ -133,7 +133,6 @@ namespace Render
 			double l1 = vec1.Length ();
 			double l2 = vec2.Length ();
 			double co = a / (l1 * l2);
-			Console.WriteLine (co);
 			return Math.Acos (co);
 		}
 	}
