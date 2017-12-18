@@ -19,6 +19,8 @@ namespace Interface
 
         private bool is_selected = false;
 
+        private bool clipping = true;
+
         private int tab_ind;
         private int prev_ind = -1;
         private Render.Point3d _prev_scale = new Point3d(1, 1, 1);
@@ -98,31 +100,38 @@ namespace Interface
 
         private void Rotate(int axis, double deg)
         {
-			if (axis == 0) {
-				f.RotateX (deg);
-			} else if (axis == 1) {
-				f.RotateY (deg);
-			} else if (axis == 2) {
-				f.RotateZ (deg);
-			} else if (axis == 3) {
-				Point3d start = new Point3d ();
-				if (!Double.TryParse (textBox_customX1.Text, out start.x))
-					start.x = 0;
-				if (!Double.TryParse (textBox_customY1.Text, out start.y))
-					start.y = 0;
-				if (!Double.TryParse (textBox_customZ1.Text, out start.z))
-					start.z = 0;
+            if (axis == 0)
+            {
+                f.RotateX(deg);
+            }
+            else if (axis == 1)
+            {
+                f.RotateY(deg);
+            }
+            else if (axis == 2)
+            {
+                f.RotateZ(deg);
+            }
+            else if (axis == 3)
+            {
+                Point3d start = new Point3d();
+                if (!Double.TryParse(textBox_customX1.Text, out start.x))
+                    start.x = 0;
+                if (!Double.TryParse(textBox_customY1.Text, out start.y))
+                    start.y = 0;
+                if (!Double.TryParse(textBox_customZ1.Text, out start.z))
+                    start.z = 0;
 
-				Point3d end = new Point3d ();
-				if (!Double.TryParse (textBox_customX2.Text, out end.x))
-					end.x = 0;
-				if (!Double.TryParse (textBox_customY2.Text, out end.y))
-					end.y = 0;
-				if (!Double.TryParse (textBox_customZ2.Text, out end.z))
-					end.z = 0;
-				Line _lin = new Line (start, end);
-				f.Rotate (_lin, deg);
-			}
+                Point3d end = new Point3d();
+                if (!Double.TryParse(textBox_customX2.Text, out end.x))
+                    end.x = 0;
+                if (!Double.TryParse(textBox_customY2.Text, out end.y))
+                    end.y = 0;
+                if (!Double.TryParse(textBox_customZ2.Text, out end.z))
+                    end.z = 0;
+                Line _lin = new Line(start, end);
+                f.Rotate(_lin, deg);
+            }
         }
 
         private void Scale(double x, double y, double z)
@@ -147,33 +156,42 @@ namespace Interface
         {
             ClearScreen();
             Pen pen = new Pen(Color.DarkRed);
-            /*foreach (var edge in f.GetLines())
+            if (!clipping)
             {
-                g.DrawLine(pen, ToPBPoint(edge.start), ToPBPoint(edge.end));
-            }*/
+                foreach (var edge in f.GetLines())
+                {
+                    g.DrawLine(pen, ToPBPoint(edge.start), ToPBPoint(edge.end));
+                }
+                pictureBox1.Invalidate();
+            }
+            else
+            {
+                var f2 = f.toVersion2();
 
-			var f2 = f.toVersion2 ();
+                foreach (var fac in f2.Faces())
+                {
 
-			foreach (var fac in f2.Faces()) {
+                    var ugol = Point3d.Ugol(fac.Normal(), new Point3d(0, 0, 1));
+                    Console.WriteLine(ugol);
+                    if (Math.Abs(ugol) > (3.0 / 2))
+                        continue;
 
-				var ugol = Point3d.Ugol (fac.Normal (), new Point3d (0, 0, 1));
-				Console.WriteLine (ugol);
-				if (Math.Abs(ugol) > (3.0 / 2))
-					continue;
+                    Point3d start = fac.Points()[0];
+                    for (int i = 0; i < (fac.Points().Count - 1); i++)
+                    {
+                        var edge = fac.Points()[i];
+                        g.DrawLine(pen, ToPBPoint(edge), ToPBPoint(fac.Points()[i + 1]));
+                    }
+                    g.DrawLine(pen, ToPBPoint(start), ToPBPoint(fac.Points()[fac.Points().Count - 1]));
+                }
+                pictureBox1.Invalidate();
 
-				Point3d start = fac.Points () [0];
-				for (int i = 0; i < (fac.Points ().Count - 1); i++) {
-					var edge = fac.Points () [i];
-					g.DrawLine(pen, ToPBPoint(edge), ToPBPoint(fac.Points () [i+1]));
-				}
-				g.DrawLine(pen, ToPBPoint(start), ToPBPoint(fac.Points () [fac.Points ().Count-1]));
-			}
+            }
+            //pictureBox1.Invalidate();
+            //f.toVersion2();
+            //TEST
+            //ToDO
 
-            pictureBox1.Invalidate();
-
-			//TEST
-			//ToDO
-			f.toVersion2 ();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -377,6 +395,15 @@ namespace Interface
             {
                 f.Load(openFileDialog1.FileName);
             }
+            DrawFigure();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+                clipping = true;
+            else
+                clipping = false;
             DrawFigure();
         }
     }
