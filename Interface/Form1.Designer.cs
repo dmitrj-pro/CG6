@@ -409,7 +409,8 @@
             resources.GetString("comboBox1.Items2"),
             resources.GetString("comboBox1.Items3"),
             resources.GetString("comboBox1.Items4"),
-            resources.GetString("comboBox1.Items5")});
+            resources.GetString("comboBox1.Items5"),
+            resources.GetString("comboBox1.Items6")});
             resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
@@ -438,16 +439,16 @@
             // radioButton1
             // 
             resources.ApplyResources(this.radioButton1, "radioButton1");
-            this.radioButton1.Checked = true;
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.TabStop = true;
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton2
             // 
             resources.ApplyResources(this.radioButton2, "radioButton2");
+            this.radioButton2.Checked = true;
             this.radioButton2.Name = "radioButton2";
+            this.radioButton2.TabStop = true;
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 

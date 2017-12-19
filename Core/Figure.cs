@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Render {
 	public class Figure {
-		private List<Line> lines;
+		public List<Line> lines;
 
 		public void Add(Line l) {
 			lines.Add(l);

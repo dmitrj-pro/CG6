@@ -19,7 +19,7 @@ namespace Interface
 
         private bool is_selected = false;
 
-        private int clipping = 1;
+        private int clipping = 2;
 
         private int tab_ind;
         private int prev_ind = -1;
@@ -249,7 +249,7 @@ namespace Interface
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBox1.SelectedIndex == 0)
+            if (comboBox1.SelectedIndex == 0)
             {
                 f = Tetrahedron();
             }
@@ -257,13 +257,137 @@ namespace Interface
             {
                 f = Hexahedron();
             }
-            else if(comboBox1.SelectedIndex == 2)
+            else if (comboBox1.SelectedIndex == 2)
             {
                 f = Figure.Generate(((double x, double y) => { return x * x - y * y; }), -20, -20, 0, 0, 10, 10);
             }
-            else
+            else if (comboBox1.SelectedIndex == 3)
             {
                 f = Figure.Generate(((double x, double y) => { return x - y; }), -30, -30, 0, 0, 10, 10);
+            }
+            else if (comboBox1.SelectedIndex == 4)
+            {
+                Figure figure = new Figure();
+                Point3d p1 = new Point3d(-50, -50, 0);
+                Point3d p4 = new Point3d(50, -50, 0);
+                figure.Add(new Line(p1, p4));
+                f = figure;
+                int count;
+                int.TryParse(textBox1.Text, out count);
+                int axis = 0;
+                if (radioButton5.Checked)
+                    axis = 1;
+                else if (radioButton6.Checked)
+                    axis = 2;
+                Figure fig = new Figure();
+                var lns = f.GetLines();
+                for (int i = 0; i < lns.Count; i++)
+                {
+                    fig.Add(new Line(new Point3d(f.lines[i].start.x, f.lines[i].start.y, f.lines[i].start.z), new Point3d(f.lines[i].end.x, f.lines[i].end.y, f.lines[i].end.z)));
+                }
+                f = new Figure();
+                for (int i = 0; i < count; i++)
+                {
+                    double angle = 360 / count;
+                    angle = angle * Math.PI / 180;
+                    if (axis == 0)
+                        fig.RotateX(angle);
+                    if (axis == 1)
+                        fig.RotateY(angle);
+                    if (axis == 2)
+                        fig.RotateZ(angle);
+                    var lines = fig.GetLines();
+                    for (int j = 0; j < lines.Count; j++)
+                    {
+                        f.Add(new Line(new Point3d(fig.lines[j].start.x, fig.lines[j].start.y, fig.lines[j].start.z), new Point3d(fig.lines[j].end.x, fig.lines[j].end.y, fig.lines[j].end.z)));
+                    }
+                }
+            }
+            else if (comboBox1.SelectedIndex == 5)
+            {
+                Figure figure = new Figure();
+                double px = -5;
+                double py = Math.Cos(-5);
+                for (double x = -5; x < 7; x += 0.1)
+                {
+                    double cx = x;
+                    double cy = Math.Cos(cx);
+                    figure.Add(new Line(new Point3d(20 * px, 20 * py - 50, 0), new Point3d(20 * cx, 20 * cy - 50, 0)));
+                    px = cx;
+                    py = cy;
+                }
+                f = figure;
+                int count;
+                int.TryParse(textBox1.Text, out count);
+                int axis = 0;
+                if (radioButton5.Checked)
+                    axis = 1;
+                else if (radioButton6.Checked)
+                    axis = 2;
+                Figure fig = new Figure();
+                var lns = f.GetLines();
+                for (int i = 0; i < lns.Count; i++)
+                {
+                    fig.Add(new Line(new Point3d(f.lines[i].start.x, f.lines[i].start.y, f.lines[i].start.z), new Point3d(f.lines[i].end.x, f.lines[i].end.y, f.lines[i].end.z)));
+                }
+                f = new Figure();
+                for (int i = 0; i < count; i++)
+                {
+                    double angle = 360 / count;
+                    angle = angle * Math.PI / 180;
+                    if (axis == 0)
+                        fig.RotateX(angle);
+                    if (axis == 1)
+                        fig.RotateY(angle);
+                    if (axis == 2)
+                        fig.RotateZ(angle);
+                    var lines = fig.GetLines();
+                    for (int j = 0; j < lines.Count; j++)
+                    {
+                        f.Add(new Line(new Point3d(fig.lines[j].start.x, fig.lines[j].start.y, fig.lines[j].start.z), new Point3d(fig.lines[j].end.x, fig.lines[j].end.y, fig.lines[j].end.z)));
+                    }
+                }
+            }
+
+            else if (comboBox1.SelectedIndex == 6)
+            {
+                Figure figure = new Figure();
+                Point3d p1 = new Point3d(0, 50, 0);
+                Point3d p2 = new Point3d(0, -50, 0);
+                Point3d p3 = new Point3d(50, 0, 0);
+                figure.Add(new Line(p1, p3));
+                figure.Add(new Line(p2, p3));
+                f = figure;
+                int count;
+                int.TryParse(textBox1.Text, out count);
+                int axis = 0;
+                if (radioButton5.Checked)
+                    axis = 1;
+                else if (radioButton6.Checked)
+                    axis = 2;
+                Figure fig = new Figure();
+                var lns = f.GetLines();
+                for (int i = 0; i < lns.Count; i++)
+                {
+                    fig.Add(new Line(new Point3d(f.lines[i].start.x, f.lines[i].start.y, f.lines[i].start.z), new Point3d(f.lines[i].end.x, f.lines[i].end.y, f.lines[i].end.z)));
+                }
+                f = new Figure();
+                for (int i = 0; i < count; i++)
+                {
+                    double angle = 360 / count;
+                    angle = angle * Math.PI / 180;
+                    if (axis == 0)
+                        fig.RotateX(angle);
+                    if (axis == 1)
+                        fig.RotateY(angle);
+                    if (axis == 2)
+                        fig.RotateZ(angle);
+                    var lines = fig.GetLines();
+                    for (int j = 0; j < lines.Count; j++)
+                    {
+                        f.Add(new Line(new Point3d(fig.lines[j].start.x, fig.lines[j].start.y, fig.lines[j].start.z), new Point3d(fig.lines[j].end.x, fig.lines[j].end.y, fig.lines[j].end.z)));
+                    }
+                }
             }
             DrawFigure();
             is_selected = true;
