@@ -95,7 +95,7 @@ namespace Render
 
 			// Почти уравнение плоскости
 			var x = m.Get (1, 1) * m.Get (2, 2) - m.Get (1, 2) * m.Get (2, 1);
-			var y = m.Get (0, 1) * m.Get (2, 2) - m.Get (1, 2) * m.Get (2, 0);
+			var y = m.Get (1, 0) * m.Get (2, 2) - m.Get (1, 2) * m.Get (2, 0);
 			var z = m.Get (1, 0) * m.Get (2, 1) - m.Get (1, 1) * m.Get (2, 0);
 
 			Point3d res = new Point3d (x, y, z);

@@ -170,7 +170,7 @@ namespace Interface
                 foreach (var fac in f2.Faces())
                 {
                     var ugol = Point3d.Ugol(fac.Normal(), new Point3d(0, 0, 200));
-                    if (Math.Abs(ugol) > (3.0 / 2))
+                    if (Math.Abs(ugol) > (3.14 / 2))
                         continue;
 
                     Point3d start = fac.Points()[0];
