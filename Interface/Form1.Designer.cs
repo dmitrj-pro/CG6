@@ -84,13 +84,14 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.left = new System.Windows.Forms.Button();
+            this.right = new System.Windows.Forms.Button();
+            this.down = new System.Windows.Forms.Button();
+            this.up = new System.Windows.Forms.Button();
+            this.rotate_left = new System.Windows.Forms.Button();
+            this.rotate_right = new System.Windows.Forms.Button();
             this.checkBox_cam = new System.Windows.Forms.CheckBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel.SuspendLayout();
             this.panel_for_figure.SuspendLayout();
@@ -510,59 +511,74 @@
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // button3
+            // left
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.left, "left");
+            this.left.Name = "left";
+            this.left.UseVisualStyleBackColor = true;
+            this.left.Click += new System.EventHandler(this.left_Click);
             // 
-            // button4
+            // right
             // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.right, "right");
+            this.right.Name = "right";
+            this.right.UseVisualStyleBackColor = true;
+            this.right.Click += new System.EventHandler(this.right_Click);
             // 
-            // button5
+            // down
             // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.down, "down");
+            this.down.Name = "down";
+            this.down.UseVisualStyleBackColor = true;
+            this.down.Click += new System.EventHandler(this.down_Click);
             // 
-            // button6
+            // up
             // 
-            resources.ApplyResources(this.button6, "button6");
-            this.button6.Name = "button6";
-            this.button6.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.up, "up");
+            this.up.Name = "up";
+            this.up.UseVisualStyleBackColor = true;
+            this.up.Click += new System.EventHandler(this.up_Click);
             // 
-            // button7
+            // rotate_left
             // 
-            resources.ApplyResources(this.button7, "button7");
-            this.button7.Name = "button7";
-            this.button7.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.rotate_left, "rotate_left");
+            this.rotate_left.Name = "rotate_left";
+            this.rotate_left.UseVisualStyleBackColor = true;
+            this.rotate_left.Click += new System.EventHandler(this.rotate_left_Click);
             // 
-            // button8
+            // rotate_right
             // 
-            resources.ApplyResources(this.button8, "button8");
-            this.button8.Name = "button8";
-            this.button8.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.rotate_right, "rotate_right");
+            this.rotate_right.Name = "rotate_right";
+            this.rotate_right.UseVisualStyleBackColor = true;
+            this.rotate_right.Click += new System.EventHandler(this.rotate_right_Click);
             // 
             // checkBox_cam
             // 
             resources.ApplyResources(this.checkBox_cam, "checkBox_cam");
             this.checkBox_cam.Name = "checkBox_cam";
             this.checkBox_cam.UseVisualStyleBackColor = true;
+            this.checkBox_cam.CheckedChanged += new System.EventHandler(this.checkBox_cam_CheckedChanged);
+            // 
+            // button3
+            // 
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.checkBox_cam);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
+            this.Controls.Add(this.checkBox_cam);
+            this.Controls.Add(this.rotate_right);
+            this.Controls.Add(this.rotate_left);
+            this.Controls.Add(this.up);
+            this.Controls.Add(this.down);
+            this.Controls.Add(this.right);
+            this.Controls.Add(this.left);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
@@ -650,13 +666,14 @@
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button left;
+        private System.Windows.Forms.Button right;
+        private System.Windows.Forms.Button down;
+        private System.Windows.Forms.Button up;
+        private System.Windows.Forms.Button rotate_left;
+        private System.Windows.Forms.Button rotate_right;
         private System.Windows.Forms.CheckBox checkBox_cam;
+        private System.Windows.Forms.Button button3;
     }
 }
 
