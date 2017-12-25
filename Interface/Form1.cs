@@ -493,6 +493,7 @@ namespace Interface
 
         private void button_clear_Click(object sender, EventArgs e)
         {
+            f = new Figure();
             ClearScreen();
             Reset();
             Reset();

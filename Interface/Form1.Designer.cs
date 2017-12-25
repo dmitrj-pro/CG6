@@ -31,6 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel = new System.Windows.Forms.Panel();
+            this.panel_for_figure = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.panel_reflect = new System.Windows.Forms.Panel();
             this.button_reflect = new System.Windows.Forms.Button();
             this.radioButton_reflectZ = new System.Windows.Forms.RadioButton();
@@ -78,14 +84,16 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.panel_for_figure = new System.Windows.Forms.Panel();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.checkBox_cam = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel.SuspendLayout();
+            this.panel_for_figure.SuspendLayout();
             this.panel_reflect.SuspendLayout();
             this.panel_scale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_scaleZ)).BeginInit();
@@ -93,7 +101,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_scaleX)).BeginInit();
             this.panel_rotate.SuspendLayout();
             this.panel_displ.SuspendLayout();
-            this.panel_for_figure.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -114,6 +121,49 @@
             this.panel.Controls.Add(this.panel_displ);
             this.panel.Controls.Add(this.comboBox1);
             this.panel.Name = "panel";
+            // 
+            // panel_for_figure
+            // 
+            this.panel_for_figure.Controls.Add(this.label14);
+            this.panel_for_figure.Controls.Add(this.textBox1);
+            this.panel_for_figure.Controls.Add(this.radioButton6);
+            this.panel_for_figure.Controls.Add(this.radioButton5);
+            this.panel_for_figure.Controls.Add(this.radioButton4);
+            resources.ApplyResources(this.panel_for_figure, "panel_for_figure");
+            this.panel_for_figure.Name = "panel_for_figure";
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            // 
+            // radioButton6
+            // 
+            resources.ApplyResources(this.radioButton6, "radioButton6");
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
+            // radioButton5
+            // 
+            resources.ApplyResources(this.radioButton5, "radioButton5");
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
+            // radioButton4
+            // 
+            resources.ApplyResources(this.radioButton4, "radioButton4");
+            this.radioButton4.Checked = true;
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.TabStop = true;
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // panel_reflect
             // 
@@ -460,53 +510,59 @@
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // panel_for_figure
+            // button3
             // 
-            this.panel_for_figure.Controls.Add(this.label14);
-            this.panel_for_figure.Controls.Add(this.textBox1);
-            this.panel_for_figure.Controls.Add(this.radioButton6);
-            this.panel_for_figure.Controls.Add(this.radioButton5);
-            this.panel_for_figure.Controls.Add(this.radioButton4);
-            resources.ApplyResources(this.panel_for_figure, "panel_for_figure");
-            this.panel_for_figure.Name = "panel_for_figure";
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // button4
             // 
-            resources.ApplyResources(this.radioButton4, "radioButton4");
-            this.radioButton4.Checked = true;
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.TabStop = true;
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            resources.ApplyResources(this.button4, "button4");
+            this.button4.Name = "button4";
+            this.button4.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // button5
             // 
-            resources.ApplyResources(this.radioButton5, "radioButton5");
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            resources.ApplyResources(this.button5, "button5");
+            this.button5.Name = "button5";
+            this.button5.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // button6
             // 
-            resources.ApplyResources(this.radioButton6, "radioButton6");
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            resources.ApplyResources(this.button6, "button6");
+            this.button6.Name = "button6";
+            this.button6.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // button7
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
+            resources.ApplyResources(this.button7, "button7");
+            this.button7.Name = "button7";
+            this.button7.UseVisualStyleBackColor = true;
             // 
-            // label14
+            // button8
             // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
+            resources.ApplyResources(this.button8, "button8");
+            this.button8.Name = "button8";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_cam
+            // 
+            resources.ApplyResources(this.checkBox_cam, "checkBox_cam");
+            this.checkBox_cam.Name = "checkBox_cam";
+            this.checkBox_cam.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBox_cam);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
@@ -519,6 +575,8 @@
             this.Name = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel.ResumeLayout(false);
+            this.panel_for_figure.ResumeLayout(false);
+            this.panel_for_figure.PerformLayout();
             this.panel_reflect.ResumeLayout(false);
             this.panel_reflect.PerformLayout();
             this.panel_scale.ResumeLayout(false);
@@ -530,8 +588,6 @@
             this.panel_rotate.PerformLayout();
             this.panel_displ.ResumeLayout(false);
             this.panel_displ.PerformLayout();
-            this.panel_for_figure.ResumeLayout(false);
-            this.panel_for_figure.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -594,6 +650,13 @@
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.CheckBox checkBox_cam;
     }
 }
 
